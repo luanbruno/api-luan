@@ -12,12 +12,20 @@ public class FuncionarioService {
 		
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
-
+	
 	public List<Funcionario> obterLista(Integer idEstabelecimento){
 		return funcionarioRepository.obterLista(idEstabelecimento);
 	}
 	
+	public List<Funcionario> obterLista(){
+		return (List<Funcionario>) funcionarioRepository.findAll();
+	}
+	
 	public void incluir(Funcionario funcionario) {
+
 		funcionarioRepository.save(funcionario);
+	}
+	public void excluir(Integer idFuncionario) {
+		funcionarioRepository.deleteById(idFuncionario);
 	}
 }
